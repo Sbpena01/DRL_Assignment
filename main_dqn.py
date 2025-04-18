@@ -10,6 +10,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 import numpy as np
 
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 class EpsilonDecayScheduler():
     # linearly decays the epsilon from start to finish over the aneal time.
@@ -35,6 +36,7 @@ class DeepQNetwork(nn.Module):
         self.fc3 = nn.Linear(self.fc2_dims, self.n_actions)
 
         self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+        print(self.device)
         self.to(self.device)
 
     def forward(self, state):
@@ -62,9 +64,9 @@ class Agent:
         self.iter_cntr = 0
 
         # Evaluation network (Q_eval)
-        self.Q_eval = DeepQNetwork(input_dims=input_dims, fc1_dims=256, fc2_dims=256, n_actions=n_actions)
+        self.Q_eval = DeepQNetwork(input_dims=input_dims, fc1_dims=256, fc2_dims=256, n_actions=n_actions).to(device)
         # Target network (Q_target) - created using deepcopy of Q_eval
-        self.Q_target = deepcopy(self.Q_eval)  # Use deepcopy to create Q_target
+        self.Q_target = deepcopy(self.Q_eval).to(device)  # Use deepcopy to create Q_target
 
         # Optimizer and loss function moved to the Agent class
         self.optimizer = optim.Adam(self.Q_eval.parameters(), lr=lr)
