@@ -215,21 +215,22 @@ def export_tensorboard_to_png(log_dir, output_dir):
 
 
 if __name__ == '__main__':
-    # env = gym.make('LunarLander-v2', render_mode="human")
-    env = gym.make('LunarLander-v2')
+    env = gym.make('LunarLander-v2', render_mode="human")
+    # env = gym.make('LunarLander-v2')
     # There are four discrete actions available: do nothing, fire left engine, fire main engine, fire right engin
     # For more info visit:
     # https://www.gymlibrary.dev/environments/box2d/lunar_lander/
 
     #env = gym.make('LunarLanderContinuous-v2')  #  the continuous version
 
-    n_episodes = 10000
-    # n_episodes = 20
+    # n_episodes = 10000
+    n_episodes = 20
     target_update_interval_episode = 200
-    checkpoint_interval = 100
+    checkpoint_interval = 5
 
     agent = Agent(gamma=0.99, epsilon_start=0.9, lr=0.001, input_dims=[8], batch_size=64, n_actions=4, epsilon_aneal_time = 1.0E6, 
                   epsilon_end=0.01, replay_buffer_size = 50000)
+    agent.load_models("/Users/scottpena/Documents/GitHub/DRL_Assignment/DQN_Checkpoints/checkpoint_episode_20.pt")
     
 
     logs_dir = Path(os.path.dirname(os.path.abspath(__file__)) + "/logs")
