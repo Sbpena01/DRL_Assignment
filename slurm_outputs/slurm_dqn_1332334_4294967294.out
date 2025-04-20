@@ -1,0 +1,355 @@
+Requirement already satisfied: absl-py==2.2.2 in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 1)) (2.2.2)
+Requirement already satisfied: Box2D==2.3.10 in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 2)) (2.3.10)
+Requirement already satisfied: cloudpickle==3.1.1 in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 3)) (3.1.1)
+Requirement already satisfied: filelock==3.18.0 in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 4)) (3.18.0)
+Requirement already satisfied: fsspec==2025.3.2 in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 5)) (2025.3.2)
+Requirement already satisfied: grpcio==1.71.0 in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 6)) (1.71.0)
+Requirement already satisfied: gym==0.26.2 in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 7)) (0.26.2)
+Requirement already satisfied: gym-notices==0.0.8 in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 8)) (0.0.8)
+Requirement already satisfied: Jinja2==3.1.6 in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 9)) (3.1.6)
+Requirement already satisfied: Markdown==3.8 in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 10)) (3.8)
+Requirement already satisfied: MarkupSafe==3.0.2 in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 11)) (3.0.2)
+Requirement already satisfied: mpmath==1.3.0 in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 12)) (1.3.0)
+Requirement already satisfied: networkx==3.4.2 in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 13)) (3.4.2)
+Requirement already satisfied: numpy==1.23.5 in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 14)) (1.23.5)
+Requirement already satisfied: packaging==24.2 in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 15)) (24.2)
+Requirement already satisfied: protobuf==6.30.2 in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 16)) (6.30.2)
+Requirement already satisfied: pygame==2.6.1 in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 17)) (2.6.1)
+Requirement already satisfied: six==1.17.0 in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 18)) (1.17.0)
+Requirement already satisfied: sympy==1.13.1 in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 19)) (1.13.1)
+Requirement already satisfied: tensorboard==2.19.0 in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 20)) (2.19.0)
+Requirement already satisfied: tensorboard-data-server==0.7.2 in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 21)) (0.7.2)
+Requirement already satisfied: torch==2.6.0 in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 22)) (2.6.0)
+Requirement already satisfied: typing_extensions==4.13.2 in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 23)) (4.13.2)
+Requirement already satisfied: Werkzeug==3.1.3 in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 24)) (3.1.3)
+Requirement already satisfied: setuptools>=41.0.0 in ./venv/lib/python3.10/site-packages (from tensorboard==2.19.0->-r requirements.txt (line 20)) (65.5.0)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.4.127 in ./venv/lib/python3.10/site-packages (from torch==2.6.0->-r requirements.txt (line 22)) (12.4.127)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.4.127 in ./venv/lib/python3.10/site-packages (from torch==2.6.0->-r requirements.txt (line 22)) (12.4.127)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.4.127 in ./venv/lib/python3.10/site-packages (from torch==2.6.0->-r requirements.txt (line 22)) (12.4.127)
+Requirement already satisfied: nvidia-cudnn-cu12==9.1.0.70 in ./venv/lib/python3.10/site-packages (from torch==2.6.0->-r requirements.txt (line 22)) (9.1.0.70)
+Requirement already satisfied: nvidia-cublas-cu12==12.4.5.8 in ./venv/lib/python3.10/site-packages (from torch==2.6.0->-r requirements.txt (line 22)) (12.4.5.8)
+Requirement already satisfied: nvidia-cufft-cu12==11.2.1.3 in ./venv/lib/python3.10/site-packages (from torch==2.6.0->-r requirements.txt (line 22)) (11.2.1.3)
+Requirement already satisfied: nvidia-curand-cu12==10.3.5.147 in ./venv/lib/python3.10/site-packages (from torch==2.6.0->-r requirements.txt (line 22)) (10.3.5.147)
+Requirement already satisfied: nvidia-cusolver-cu12==11.6.1.9 in ./venv/lib/python3.10/site-packages (from torch==2.6.0->-r requirements.txt (line 22)) (11.6.1.9)
+Requirement already satisfied: nvidia-cusparse-cu12==12.3.1.170 in ./venv/lib/python3.10/site-packages (from torch==2.6.0->-r requirements.txt (line 22)) (12.3.1.170)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.6.2 in ./venv/lib/python3.10/site-packages (from torch==2.6.0->-r requirements.txt (line 22)) (0.6.2)
+Requirement already satisfied: nvidia-nccl-cu12==2.21.5 in ./venv/lib/python3.10/site-packages (from torch==2.6.0->-r requirements.txt (line 22)) (2.21.5)
+Requirement already satisfied: nvidia-nvtx-cu12==12.4.127 in ./venv/lib/python3.10/site-packages (from torch==2.6.0->-r requirements.txt (line 22)) (12.4.127)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.4.127 in ./venv/lib/python3.10/site-packages (from torch==2.6.0->-r requirements.txt (line 22)) (12.4.127)
+Requirement already satisfied: triton==3.2.0 in ./venv/lib/python3.10/site-packages (from torch==2.6.0->-r requirements.txt (line 22)) (3.2.0)
+##### total number of network params = 69124
+log directory = /home/sbpena/DRL_Assignment/logs
+target network updated.
+episode: 0, env_step_num = 71, score = -72.07695519911746
+episode: 1, env_step_num = 218, score = -277.9595408080703
+episode: 2, env_step_num = 303, score = -153.72675395004688
+episode: 3, env_step_num = 373, score = -131.4829377941724
+episode: 4, env_step_num = 451, score = -103.74540777406858
+episode: 5, env_step_num = 540, score = -336.4577683043591
+episode: 6, env_step_num = 628, score = -295.21623785320907
+episode: 7, env_step_num = 689, score = -131.78270840182202
+episode: 8, env_step_num = 782, score = -151.4745320766773
+episode: 9, env_step_num = 894, score = -407.5332735524149
+episode: 10, env_step_num = 1020, score = -147.32348364020845
+episode: 11, env_step_num = 1129, score = -115.0100133383104
+episode: 12, env_step_num = 1220, score = -252.0878883343968
+episode: 13, env_step_num = 1310, score = -267.79115219400194
+episode: 14, env_step_num = 1399, score = -123.25122234012244
+episode: 15, env_step_num = 1485, score = -93.51409120334878
+episode: 16, env_step_num = 1587, score = -274.8894585932594
+episode: 17, env_step_num = 1678, score = -96.39738743745764
+episode: 18, env_step_num = 1793, score = -276.63058002547325
+episode: 19, env_step_num = 1858, score = -208.16291109153576
+episode: 20, env_step_num = 1969, score = -147.66114414660348
+episode: 21, env_step_num = 2115, score = -131.99460803969373
+episode: 22, env_step_num = 2218, score = -177.9955501609195
+episode: 23, env_step_num = 2313, score = -269.0476459906024
+episode: 24, env_step_num = 2394, score = -125.09551095399551
+episode: 25, env_step_num = 2526, score = -190.50237017744348
+episode: 26, env_step_num = 2647, score = -214.40904593078352
+episode: 27, env_step_num = 2760, score = -221.0710527434146
+episode: 28, env_step_num = 2866, score = -8.01308225666196
+episode: 29, env_step_num = 2955, score = -81.25671080074363
+episode: 30, env_step_num = 3057, score = -281.2021843783546
+episode: 31, env_step_num = 3135, score = -161.9264177423968
+episode: 32, env_step_num = 3213, score = -155.349627491282
+episode: 33, env_step_num = 3300, score = -126.42753120869139
+episode: 34, env_step_num = 3390, score = -243.59852112949613
+episode: 35, env_step_num = 3453, score = -73.44007113614742
+episode: 36, env_step_num = 3527, score = -87.69179180550051
+episode: 37, env_step_num = 3635, score = -223.93647346421892
+episode: 38, env_step_num = 3757, score = -243.66087611960148
+episode: 39, env_step_num = 3830, score = -350.70464903905196
+episode: 40, env_step_num = 3929, score = -163.18317609811803
+episode: 41, env_step_num = 4017, score = -285.6786843066498
+episode: 42, env_step_num = 4081, score = -110.61913018300369
+episode: 43, env_step_num = 4169, score = -87.0047048628568
+episode: 44, env_step_num = 4234, score = -132.32473371661416
+episode: 45, env_step_num = 4299, score = -80.29094534437931
+episode: 46, env_step_num = 4423, score = -236.57412526798072
+episode: 47, env_step_num = 4536, score = -225.39350918300576
+episode: 48, env_step_num = 4606, score = -113.02799362763182
+episode: 49, env_step_num = 4701, score = -252.32217615094578
+episode: 50, env_step_num = 4819, score = -261.09618205926756
+episode: 51, env_step_num = 4891, score = -271.9760402632416
+episode: 52, env_step_num = 5023, score = -371.8164749403667
+episode: 53, env_step_num = 5124, score = -157.5200826402266
+episode: 54, env_step_num = 5195, score = -104.14133763825612
+episode: 55, env_step_num = 5263, score = -301.7406513433947
+episode: 56, env_step_num = 5361, score = -404.49170725329293
+episode: 57, env_step_num = 5426, score = -98.01180888611081
+episode: 58, env_step_num = 5522, score = -116.85582973452219
+episode: 59, env_step_num = 5597, score = -82.6042617335786
+episode: 60, env_step_num = 5693, score = -465.9444558777049
+episode: 61, env_step_num = 5796, score = -110.36360766884101
+episode: 62, env_step_num = 5905, score = -135.42208360717012
+episode: 63, env_step_num = 5972, score = -75.31786092249173
+episode: 64, env_step_num = 6065, score = -391.9290373389816
+episode: 65, env_step_num = 6145, score = -172.97058752826337
+episode: 66, env_step_num = 6223, score = -229.2879566072371
+episode: 67, env_step_num = 6351, score = -72.87446577375002
+episode: 68, env_step_num = 6420, score = -84.9544656236585
+episode: 69, env_step_num = 6492, score = -107.63396097171484
+episode: 70, env_step_num = 6588, score = -169.61471999615492
+episode: 71, env_step_num = 6653, score = -92.48644794952524
+episode: 72, env_step_num = 6750, score = -150.3484787518604
+episode: 73, env_step_num = 6840, score = -4.612197721325131
+episode: 74, env_step_num = 6906, score = -120.12721470626956
+episode: 75, env_step_num = 6991, score = -112.1690901701545
+episode: 76, env_step_num = 7071, score = -108.91835444895676
+episode: 77, env_step_num = 7160, score = -85.0036440694896
+episode: 78, env_step_num = 7272, score = -264.01558047345634
+episode: 79, env_step_num = 7344, score = -88.21222036401623
+episode: 80, env_step_num = 7502, score = -222.24203656075264
+episode: 81, env_step_num = 7584, score = -145.0752962954474
+episode: 82, env_step_num = 7676, score = -267.04230238934105
+episode: 83, env_step_num = 7791, score = -419.5887484744949
+episode: 84, env_step_num = 7879, score = 31.864773768020598
+episode: 85, env_step_num = 7943, score = -136.8736861115321
+episode: 86, env_step_num = 8035, score = -337.1784988234681
+episode: 87, env_step_num = 8160, score = -239.06229310049304
+episode: 88, env_step_num = 8263, score = -114.59686279262394
+episode: 89, env_step_num = 8336, score = -103.75265593564788
+episode: 90, env_step_num = 8419, score = -332.29340898291605
+episode: 91, env_step_num = 8511, score = -96.30847053024601
+episode: 92, env_step_num = 8608, score = -144.9033720579148
+episode: 93, env_step_num = 8702, score = -217.01293387328593
+episode: 94, env_step_num = 8789, score = -381.12173680767773
+episode: 95, env_step_num = 8907, score = -287.48541982949655
+episode: 96, env_step_num = 9017, score = -305.47046641499253
+episode: 97, env_step_num = 9098, score = -141.5520139429692
+episode: 98, env_step_num = 9192, score = -139.86535778567543
+episode: 99, env_step_num = 9322, score = -72.17336277422191
+episode: 100, env_step_num = 9418, score = -394.97612298857007
+episode: 101, env_step_num = 9475, score = -111.04693931370126
+episode: 102, env_step_num = 9597, score = -97.61304987906891
+episode: 103, env_step_num = 9666, score = -79.38260765597707
+episode: 104, env_step_num = 9789, score = -143.36432076215777
+episode: 105, env_step_num = 9859, score = -122.9068649199371
+episode: 106, env_step_num = 9946, score = -220.977252295102
+episode: 107, env_step_num = 10053, score = -199.07108908810238
+episode: 108, env_step_num = 10114, score = -174.2620096294018
+episode: 109, env_step_num = 10232, score = -221.1982554095085
+episode: 110, env_step_num = 10297, score = -138.90774475811287
+episode: 111, env_step_num = 10389, score = -72.93089818979371
+episode: 112, env_step_num = 10499, score = -522.6475463146485
+episode: 113, env_step_num = 10581, score = -0.13762986754449003
+episode: 114, env_step_num = 10653, score = -82.03990806240205
+episode: 115, env_step_num = 10754, score = -260.8912693235097
+episode: 116, env_step_num = 10855, score = -128.92218066502866
+episode: 117, env_step_num = 10955, score = -242.06184699676433
+episode: 118, env_step_num = 11021, score = -139.65878750672601
+episode: 119, env_step_num = 11130, score = -111.7245010191985
+episode: 120, env_step_num = 11231, score = -132.05988060026647
+episode: 121, env_step_num = 11311, score = -187.22975691820943
+episode: 122, env_step_num = 11447, score = -257.3322240676189
+episode: 123, env_step_num = 11568, score = -213.99986333114992
+episode: 124, env_step_num = 11644, score = -250.44271252727208
+episode: 125, env_step_num = 11742, score = -242.71548117160467
+episode: 126, env_step_num = 11826, score = -160.29598072265384
+episode: 127, env_step_num = 11927, score = -161.337272738815
+episode: 128, env_step_num = 12054, score = -89.83938354212006
+episode: 129, env_step_num = 12126, score = -71.65147286293201
+episode: 130, env_step_num = 12205, score = -154.66042733642223
+episode: 131, env_step_num = 12317, score = -78.63622123071752
+episode: 132, env_step_num = 12391, score = -95.14540200496386
+episode: 133, env_step_num = 12461, score = -66.12598952914351
+episode: 134, env_step_num = 12585, score = -149.47305742436816
+episode: 135, env_step_num = 12642, score = -207.53578009590362
+episode: 136, env_step_num = 12716, score = -233.53619533027546
+episode: 137, env_step_num = 12774, score = -90.30685985919094
+episode: 138, env_step_num = 12867, score = -112.94620916387873
+episode: 139, env_step_num = 12980, score = -168.76552233508227
+episode: 140, env_step_num = 13064, score = -211.43073599165595
+episode: 141, env_step_num = 13162, score = 2.18203114164902
+episode: 142, env_step_num = 13241, score = -171.91249940049
+episode: 143, env_step_num = 13319, score = -212.23121565149006
+episode: 144, env_step_num = 13422, score = -95.76573222141162
+episode: 145, env_step_num = 13536, score = -310.12947453965046
+episode: 146, env_step_num = 13617, score = -134.70981556768407
+episode: 147, env_step_num = 13738, score = -150.85597163167887
+episode: 148, env_step_num = 13811, score = -190.75230632056744
+episode: 149, env_step_num = 13872, score = -89.08815778333363
+episode: 150, env_step_num = 13963, score = -94.71482202175913
+episode: 151, env_step_num = 14082, score = -87.58658037605841
+episode: 152, env_step_num = 14176, score = -2.820886457921276
+episode: 153, env_step_num = 14293, score = -136.7444565672202
+episode: 154, env_step_num = 14374, score = -168.38231037834072
+episode: 155, env_step_num = 14472, score = -372.2314681669736
+episode: 156, env_step_num = 14551, score = -166.1738533125872
+episode: 157, env_step_num = 14656, score = -205.57430134048604
+episode: 158, env_step_num = 14738, score = -295.13491739112476
+episode: 159, env_step_num = 14804, score = -140.07739181370488
+episode: 160, env_step_num = 14924, score = -139.87023482687238
+episode: 161, env_step_num = 14996, score = -146.22516006028752
+episode: 162, env_step_num = 15074, score = -117.47285467944856
+episode: 163, env_step_num = 15166, score = -117.2145884896155
+episode: 164, env_step_num = 15261, score = -75.99401477392746
+episode: 165, env_step_num = 15320, score = -78.25187014750045
+episode: 166, env_step_num = 15414, score = -214.47411494489594
+episode: 167, env_step_num = 15530, score = -147.57210183817404
+episode: 168, env_step_num = 15594, score = -78.24275290130655
+episode: 169, env_step_num = 15702, score = -134.18879583998205
+episode: 170, env_step_num = 15824, score = -170.77144647684167
+episode: 171, env_step_num = 15958, score = -101.27419435010239
+episode: 172, env_step_num = 16033, score = -309.25272666525416
+episode: 173, env_step_num = 16115, score = -208.08448272443803
+episode: 174, env_step_num = 16173, score = -102.81166544501285
+episode: 175, env_step_num = 16246, score = -101.33965609984338
+episode: 176, env_step_num = 16312, score = -191.18695328854048
+episode: 177, env_step_num = 16387, score = -139.3014845589914
+episode: 178, env_step_num = 16489, score = -126.51791859881797
+episode: 179, env_step_num = 16580, score = -186.76827861168238
+episode: 180, env_step_num = 16640, score = -121.94330801055742
+episode: 181, env_step_num = 16771, score = -162.00406712035817
+episode: 182, env_step_num = 16837, score = -122.88042453287835
+episode: 183, env_step_num = 16948, score = -61.781798690491556
+episode: 184, env_step_num = 17043, score = -99.94904212059576
+episode: 185, env_step_num = 17122, score = -146.61873887969477
+episode: 186, env_step_num = 17225, score = -270.0431143834221
+episode: 187, env_step_num = 17310, score = -160.68104968993765
+episode: 188, env_step_num = 17419, score = -71.56100039575011
+episode: 189, env_step_num = 17513, score = -102.90525133820876
+episode: 190, env_step_num = 17633, score = -111.51876144582664
+episode: 191, env_step_num = 17763, score = -303.6897990284283
+episode: 192, env_step_num = 17833, score = -59.9669257217474
+episode: 193, env_step_num = 17957, score = -269.23390599861
+episode: 194, env_step_num = 18073, score = 20.603066579026446
+episode: 195, env_step_num = 18147, score = -7.843507138228986
+episode: 196, env_step_num = 18257, score = -271.1613182030998
+episode: 197, env_step_num = 18380, score = -141.66217260389018
+episode: 198, env_step_num = 18475, score = -222.40665017181664
+episode: 199, env_step_num = 18550, score = -88.64861538061545
+target network updated.
+episode: 200, env_step_num = 18682, score = -217.1293921728388
+episode: 201, env_step_num = 18752, score = -60.08404984844459
+episode: 202, env_step_num = 18866, score = -116.18419066748142
+episode: 203, env_step_num = 18979, score = -284.1918261416487
+episode: 204, env_step_num = 19097, score = -96.757932797159
+episode: 205, env_step_num = 19186, score = -204.65040732322174
+episode: 206, env_step_num = 19292, score = -273.6664251546516
+episode: 207, env_step_num = 19377, score = -98.58493979044125
+episode: 208, env_step_num = 19437, score = -69.78736518222703
+episode: 209, env_step_num = 19560, score = -16.95668273642245
+episode: 210, env_step_num = 19629, score = -163.09069528618284
+episode: 211, env_step_num = 19750, score = -206.8606684745045
+episode: 212, env_step_num = 19839, score = -147.4069513498834
+episode: 213, env_step_num = 19939, score = -197.31262387497503
+episode: 214, env_step_num = 20015, score = -100.69459789158805
+episode: 215, env_step_num = 20081, score = -164.36345927642344
+episode: 216, env_step_num = 20155, score = -246.74598708587766
+episode: 217, env_step_num = 20273, score = -133.44121692524882
+episode: 218, env_step_num = 20386, score = -154.07256609939333
+episode: 219, env_step_num = 20449, score = -269.0196174052087
+episode: 220, env_step_num = 20596, score = -230.99858465309234
+episode: 221, env_step_num = 20694, score = -107.90507770867163
+episode: 222, env_step_num = 20813, score = -84.9277083171868
+episode: 223, env_step_num = 20931, score = -113.86645545072508
+episode: 224, env_step_num = 21001, score = -137.23934746390975
+episode: 225, env_step_num = 21123, score = -225.29456334161006
+episode: 226, env_step_num = 21202, score = -121.4774319651029
+episode: 227, env_step_num = 21310, score = -155.4933512845784
+episode: 228, env_step_num = 21404, score = 47.95665313782155
+episode: 229, env_step_num = 21519, score = -76.91338085296994
+episode: 230, env_step_num = 21589, score = -141.35141054096854
+episode: 231, env_step_num = 21659, score = -139.34787546054625
+episode: 232, env_step_num = 21738, score = -111.55398622768307
+episode: 233, env_step_num = 21854, score = -111.46672346536674
+episode: 234, env_step_num = 22033, score = -99.89730885482093
+episode: 235, env_step_num = 22162, score = -328.0033354850348
+episode: 236, env_step_num = 22292, score = -58.66805658501421
+episode: 237, env_step_num = 22377, score = -132.56248059051148
+episode: 238, env_step_num = 22495, score = -210.03614917922988
+episode: 239, env_step_num = 22570, score = -102.20357259414644
+episode: 240, env_step_num = 22676, score = -107.46241680411674
+episode: 241, env_step_num = 22791, score = -161.9590816414191
+episode: 242, env_step_num = 22925, score = -175.95301284762454
+episode: 243, env_step_num = 23057, score = -135.15744855628736
+episode: 244, env_step_num = 23148, score = -353.3531453915384
+episode: 245, env_step_num = 23246, score = -201.86093754159975
+episode: 246, env_step_num = 23347, score = -109.45867606698475
+episode: 247, env_step_num = 23450, score = -344.55211209582
+episode: 248, env_step_num = 23551, score = -172.10542165053957
+episode: 249, env_step_num = 23633, score = -296.57452708783137
+episode: 250, env_step_num = 23716, score = -327.38434068129425
+episode: 251, env_step_num = 23804, score = -194.9057831115416
+episode: 252, env_step_num = 23890, score = -84.77654316422425
+episode: 253, env_step_num = 23982, score = -125.83958630487119
+episode: 254, env_step_num = 24120, score = -177.96048149842943
+episode: 255, env_step_num = 24218, score = -131.15315189543162
+episode: 256, env_step_num = 24281, score = -111.04009336101805
+episode: 257, env_step_num = 24343, score = -80.33606052111304
+episode: 258, env_step_num = 24417, score = -45.56309739355496
+episode: 259, env_step_num = 24492, score = -65.57775754037843
+episode: 260, env_step_num = 24565, score = -75.55885322863281
+episode: 261, env_step_num = 24647, score = -191.48007640956556
+episode: 262, env_step_num = 24731, score = -246.2010302486484
+episode: 263, env_step_num = 24833, score = -84.36718209134716
+episode: 264, env_step_num = 24922, score = -303.64337244860087
+episode: 265, env_step_num = 25017, score = -395.5584881040218
+episode: 266, env_step_num = 25124, score = -44.92973085774848
+episode: 267, env_step_num = 25214, score = -100.57295609785406
+episode: 268, env_step_num = 25295, score = -240.11698214169576
+episode: 269, env_step_num = 25408, score = -138.64495092666664
+episode: 270, env_step_num = 25481, score = -209.18878519831173
+episode: 271, env_step_num = 25587, score = -119.7820975568782
+episode: 272, env_step_num = 25652, score = -108.62944409449499
+episode: 273, env_step_num = 25763, score = -367.0073597587031
+episode: 274, env_step_num = 25841, score = -81.99126247707835
+episode: 275, env_step_num = 25925, score = -138.04074941320994
+episode: 276, env_step_num = 25997, score = -98.5360769590034
+episode: 277, env_step_num = 26072, score = -93.31269567776036
+episode: 278, env_step_num = 26194, score = -369.38303962623826
+episode: 279, env_step_num = 26346, score = -167.82935550176433
+episode: 280, env_step_num = 26413, score = -71.72438460610147
+episode: 281, env_step_num = 26520, score = -183.1481445368815
+episode: 282, env_step_num = 26600, score = -96.19610326624264
+episode: 283, env_step_num = 26689, score = -79.57945800405729
+episode: 284, env_step_num = 26796, score = -110.56107058656738
+episode: 285, env_step_num = 26872, score = -88.65845522378072
+episode: 286, env_step_num = 26957, score = -123.10169028892433
+episode: 287, env_step_num = 27032, score = -52.916749474662666
+episode: 288, env_step_num = 27140, score = -545.7258410459566
+episode: 289, env_step_num = 27236, score = -202.25229119724645
+episode: 290, env_step_num = 27308, score = -110.25789022801028
+episode: 291, env_step_num = 27432, score = -9.621178344780688
+episode: 292, env_step_num = 27529, score = -117.6445515936831
+episode: 293, env_step_num = 27590, score = -185.2217630393132
+episode: 294, env_step_num = 27711, score = -262.20552609629783
+episode: 295, env_step_num = 27813, score = -447.3642332508948
+episode: 296, env_step_num = 27920, score = -418.2044790218673
+episode: 297, env_step_num = 28009, score = -381.0680678909472
+episode: 298, env_step_num = 28096, score = -274.4234474392418
+episode: 299, env_step_num = 28210, score = -270.5042818435652
+episode: 300, env_step_num = 28281, score = -96.69610084631415
+episode: 301, env_step_num = 28358, score = -136.4501944271972
+episode: 302, env_step_num = 28493, score = -132.83116882888623
+episode: 303, env_step_num = 28601, score = -262.7091381195795
+episode: 304, env_step_num = 28691, score = -178.6905489799468
+episode: 305, env_step_num = 28772, score = -310.35442339712245
+episode: 306, env_step_num = 28842, score = -159.93744410860853
+episode: 307, env_step_num = 28936, score = -215.47638378184016
+episode: 308, env_step_num = 29015, score = -110.24994328386546
+episode: 309, env_step_num = 29144, score = -374.3185372288293
+episode: 310, env_step_num = 29235, score = -420.6308137196388
+episode: 311, env_step_num = 29351, score = -128.7301378332883

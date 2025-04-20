@@ -1,0 +1,21 @@
+Loading py-pip/24.0/ysmqmsi
+  Loading requirement: bzip2/1.0.8/v5zliir ncurses/6.4/3vtbxql
+    readline/8.2/e46hg2m gdbm/1.23/as2ir6a libiconv/1.17/43rr47g
+    xz/5.4.6/dnpbdlz zlib-ng/2.1.6/wmsrr57 libxml2/2.10.3/slxho4w
+    pigz/2.8/coulvlj zstd/1.5.5/4kwnn75 tar/1.34/3vymftg gettext/0.22.4/zk5y7ih
+    libffi/3.4.4/litq6ds openssl/3.2.1/5wh2h54 sqlite/3.43.2/3uhbzmo
+    util-linux-uuid/2.38.1/cvlv6yx python/3.11.7/wlia5wq
+
+Loading ffmpeg/6.1.1/cup2q2r
+  Loading requirement: alsa-lib/1.2.3.2/grjkjgj bzip2/1.0.8/ywb3ezr
+    font-util/1.4.0/j3jqaua zlib-ng/2.1.5/lovduqa libpng/1.6.39/tyzerfj
+    freetype/2.11.1/mw5msje libiconv/1.17/wwzbwbx xz/5.4.1/4r3i74x
+    libxml2/2.10.3/w5l7v2m fontconfig/2.14.2/3xsmfkh fribidi/1.0.12/trrz4br
+    libogg/1.3.5/fccllfn libvorbis/1.3.7/muxt73o opus/1.3.1/35wmioh
+    nasm/2.15.05/tkddyj6 x264/20240314/zqmh2yv yasm/1.3.0/raxf7v7
+
+[notice] A new release of pip is available: 24.0 -> 25.0.1
+[notice] To update, run: pip install --upgrade pip
+/home/sbpena/DRL_Assignment/main_dqn.py:98: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at /pytorch/torch/csrc/utils/tensor_new.cpp:254.)
+  state = torch.tensor([observation]).to(self.Q_eval.device)
+slurmstepd: error: *** JOB 1332334 ON gpu-4-21 CANCELLED AT 2025-04-18T12:12:03 ***
