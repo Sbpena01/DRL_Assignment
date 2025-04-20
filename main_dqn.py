@@ -1,6 +1,7 @@
 import gym
 import numpy as np
 from torch.utils.tensorboard import SummaryWriter
+from tensorflow.python.summary.summary_iterator import summary_iterator
 from pathlib import Path
 import os
 from copy import deepcopy
@@ -9,6 +10,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 import numpy as np
+import matplotlib.pyplot as plt
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -141,6 +143,55 @@ class Agent:
         self.optimizer.step()
 
 
+def export_tensorboard_to_png(log_dir, output_dir):
+    """
+    Export TensorBoard metrics to PNG files
+    
+    Args:
+        log_dir: Directory containing TensorBoard logs
+        output_dir: Directory to save PNG files
+    """
+    # Create output directory if it doesn't exist
+    os.makedirs(output_dir, exist_ok=True)
+    
+    # Get all event files
+    event_files = []
+    for root, dirs, files in os.walk(log_dir):
+        for file in files:
+            if file.startswith("events.out.tfevents"):
+                event_files.append(os.path.join(root, file))
+    
+    # Dictionary to store metrics
+    metrics = {}
+    
+    # Parse each event file
+    for event_file in event_files:
+        for event in summary_iterator(event_file):
+            for value in event.summary.value:
+                if value.HasField('simple_value'):
+                    if value.tag not in metrics:
+                        metrics[value.tag] = {"steps": [], "values": []}
+                    metrics[value.tag]["steps"].append(event.step)
+                    metrics[value.tag]["values"].append(value.simple_value)
+    
+    # Generate a plot for each metric
+    for tag, data in metrics.items():
+        plt.figure(figsize=(10, 6))
+        plt.plot(data["steps"], data["values"])
+        plt.title(tag)
+        plt.xlabel("Step")
+        plt.ylabel("Value")
+        plt.grid(True)
+        
+        # Clean tag name for file naming
+        clean_tag = tag.replace('/', '_').replace(' ', '_')
+        save_path = os.path.join(output_dir, f"{clean_tag}.png")
+        
+        plt.savefig(save_path, dpi=300)
+        plt.close()
+    
+    print(f"Exported {len(metrics)} metrics to {output_dir}")
+
 
 if __name__ == '__main__':
     env = gym.make('LunarLander-v2')
@@ -150,7 +201,8 @@ if __name__ == '__main__':
 
     #env = gym.make('LunarLanderContinuous-v2')  #  the continuous version
 
-    n_episodes = 10000
+    # n_episodes = 10000
+    n_episodes = 10
     target_update_interval_episode = 200
 
     agent = Agent(gamma=0.99, epsilon_start=1.0, lr=0.001, input_dims=[8], batch_size=64, n_actions=4, epsilon_aneal_time = 1.0E6, 
@@ -172,6 +224,9 @@ if __name__ == '__main__':
         os.makedirs(str(logs_dir))
 
     writer = SummaryWriter(logs_dir)
+    dummy_input = torch.zeros((1, 8)).to(device)
+    writer.add_graph(agent.Q_eval, dummy_input)
+
     total_env_steps = 0
     for i in range(n_episodes):
         score = 0
@@ -194,5 +249,11 @@ if __name__ == '__main__':
         writer.add_scalars("epsilon/", {"epsilon": agent.epsilon}, total_env_steps)
 
         print(f"episode: {i}, env_step_num = {total_env_steps}, score = {score}")
+    writer.close()
+    
+    # Export TensorBoard data to PNG files
+    output_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "png_exports", curr_runn)
+    print(f"Exporting TensorBoard metrics to PNG files at {output_dir}")
+    export_tensorboard_to_png(str(logs_dir), output_dir)
    
 
