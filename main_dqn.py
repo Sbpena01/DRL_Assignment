@@ -205,8 +205,8 @@ if __name__ == '__main__':
     # n_episodes = 10
     target_update_interval_episode = 200
 
-    agent = Agent(gamma=0.99, epsilon_start=1.0, lr=0.001, input_dims=[8], batch_size=64, n_actions=4, epsilon_aneal_time = 1.0E6, 
-                  epsilon_end=0.01, replay_buffer_size = 50000 )
+    agent = Agent(gamma=0.99, epsilon_start=1.0, lr=0.0005, input_dims=[8], batch_size=64, n_actions=4, epsilon_aneal_time = 4.5E5, 
+                  epsilon_end=0.01, replay_buffer_size = int(2E5) )
     
 
     logs_dir = Path(os.path.dirname(os.path.abspath(__file__)) + "/logs")

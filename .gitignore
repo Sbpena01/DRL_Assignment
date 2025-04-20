@@ -2,3 +2,4 @@
 venv/
 logs/
 png_exports/
+slurm_outputs/
