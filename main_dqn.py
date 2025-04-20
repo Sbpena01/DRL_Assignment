@@ -201,8 +201,8 @@ if __name__ == '__main__':
 
     #env = gym.make('LunarLanderContinuous-v2')  #  the continuous version
 
-    # n_episodes = 10000
-    n_episodes = 10
+    n_episodes = 10000
+    # n_episodes = 10
     target_update_interval_episode = 200
 
     agent = Agent(gamma=0.99, epsilon_start=1.0, lr=0.001, input_dims=[8], batch_size=64, n_actions=4, epsilon_aneal_time = 1.0E6, 
