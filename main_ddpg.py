@@ -46,7 +46,7 @@ class CriticNetwork(torch.nn.Module):
 
 # Define the DDPG Agent
 class DDPGAgent:
-    def __init__(self, state_dim, n_actions, alpha=0.0001, beta=0.0001, gamma=0.99, tau=0.01):
+    def __init__(self, state_dim, n_actions, alpha=0.0001, beta=0.0001, gamma=0.99, tau=0.005):
         self.gamma = gamma
         self.tau = tau
         self.n_actions = n_actions

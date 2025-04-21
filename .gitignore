@@ -3,3 +3,4 @@ venv/
 logs/
 png_exports/
 slurm_outputs/
+episode_rewars_.png
