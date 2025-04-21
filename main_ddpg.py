@@ -2,6 +2,13 @@ import numpy as np
 import torch as torch
 import torch.nn.functional as F
 import gym
+from torch.utils.tensorboard import SummaryWriter
+from tensorflow.python.summary.summary_iterator import summary_iterator
+import matplotlib.pyplot as plt
+import os
+
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Define the Actor Network
 class ActorNetwork(torch.nn.Module):
@@ -39,7 +46,7 @@ class CriticNetwork(torch.nn.Module):
 
 # Define the DDPG Agent
 class DDPGAgent:
-    def __init__(self, state_dim, n_actions, alpha=0.001, beta=0.001, gamma=0.99, tau=0.005):
+    def __init__(self, state_dim, n_actions, alpha=0.0001, beta=0.0001, gamma=0.99, tau=0.01):
         self.gamma = gamma
         self.tau = tau
         self.n_actions = n_actions
@@ -52,6 +59,8 @@ class DDPGAgent:
         self.update_network_parameters(tau=tau)
 
     def choose_action(self, observation):
+        if isinstance(observation, tuple):
+            observation = observation[0]
         state = torch.tensor([observation], dtype=torch.float).to(self.actor.device)
         actions = self.actor.forward(state)
         noise = torch.rand(self.n_actions).to(self.actor.device) * 0.1  #FIXME: Add exploration noise with decay
@@ -116,6 +125,8 @@ class DDPGAgent:
 
         # Update target networks
         self.update_network_parameters()
+        
+    
 
 # Define the Replay Buffer
 class ReplayBuffer:
@@ -130,7 +141,7 @@ class ReplayBuffer:
 
     def store_transition(self, state, action, reward, state_, done):
         index = self.mem_cntr % self.mem_size
-        self.state_memory[index] = state
+        self.state_memory[index] = state[0]
         self.new_state_memory[index] = state_
         self.action_memory[index] = action
         self.reward_memory[index] = reward
@@ -149,6 +160,56 @@ class ReplayBuffer:
 
         return states, actions, rewards, states_next, dones
 
+def export_tensorboard_to_png(log_dir, output_dir):
+    """
+    Export TensorBoard metrics to PNG files
+    
+    Args:
+        log_dir: Directory containing TensorBoard logs
+        output_dir: Directory to save PNG files
+    """
+    # Create output directory if it doesn't exist
+    os.makedirs(output_dir, exist_ok=True)
+    
+    # Get all event files
+    event_files = []
+    for root, dirs, files in os.walk(log_dir):
+        for file in files:
+            if file.startswith("events.out.tfevents"):
+                event_files.append(os.path.join(root, file))
+    
+    # Dictionary to store metrics
+    metrics = {}
+    
+    # Parse each event file
+    for event_file in event_files:
+        for event in summary_iterator(event_file):
+            for value in event.summary.value:
+                if value.HasField('simple_value'):
+                    if value.tag not in metrics:
+                        metrics[value.tag] = {"steps": [], "values": []}
+                    metrics[value.tag]["steps"].append(event.step)
+                    metrics[value.tag]["values"].append(value.simple_value)
+    
+    # Generate a plot for each metric
+    for tag, data in metrics.items():
+        plt.figure(figsize=(10, 6))
+        plt.plot(data["steps"], data["values"])
+        plt.title(tag)
+        plt.xlabel("Step")
+        plt.ylabel("Value")
+        plt.grid(True)
+        
+        # Clean tag name for file naming
+        clean_tag = tag.replace('/', '_').replace(' ', '_')
+        save_path = os.path.join(output_dir, f"{clean_tag}.png")
+        
+        plt.savefig(save_path, dpi=300)
+        plt.close()
+    
+    print(f"Exported {len(metrics)} metrics to {output_dir}")
+
+
 # Main Training Loop
 if __name__ == '__main__':
     env = gym.make('LunarLanderContinuous-v2')
@@ -163,6 +224,10 @@ if __name__ == '__main__':
     batch_size = 64
     total_steps = 0
     score_history = []
+    writer = SummaryWriter('DDPG_logs')
+    dummy_input = torch.zeros((1, 8)).to(device)
+    writer.add_graph(agent.actor, dummy_input)
+    
 
     for i in range(N_episodes):
         state = env.reset()
@@ -173,7 +238,7 @@ if __name__ == '__main__':
             if episode_step >= MAX_STEPS:
                 break
             action = agent.choose_action(state)
-            state_next, reward, done, info = env.step(action)  # Ensure action is clipped and in correct format
+            state_next, reward, done, info, tmp = env.step(action)  # Ensure action is clipped and in correct format
             memory.store_transition(state, action, reward, state_next, done)
             agent.learn(memory, batch_size)
 
@@ -186,4 +251,13 @@ if __name__ == '__main__':
         if i % PRINT_INTERVAL == 0 and i > 0:
             print('episode', i, 'average score {:.1f}'.format(avg_score))
             agent.save_models()
+            writer.add_scalars("episode rewars/", {"training_reward": avg_score}, total_steps)
+            # writer.add_scalars("epsilon/", {"epsilon": agent.epsilon}, total_env_steps)
+    
+    writer.close()
+    
+    # Export TensorBoard data to PNG files
+    output_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "png_exports", "run001")
+    print(f"Exporting TensorBoard metrics to PNG files at {output_dir}")
+    export_tensorboard_to_png(str('DDPG_logs'), output_dir)
 

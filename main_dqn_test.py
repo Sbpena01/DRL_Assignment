@@ -230,7 +230,7 @@ if __name__ == '__main__':
 
     agent = Agent(gamma=0.99, epsilon_start=0.9, lr=0.001, input_dims=[8], batch_size=64, n_actions=4, epsilon_aneal_time = 1.0E6, 
                   epsilon_end=0.01, replay_buffer_size = 50000)
-    agent.load_models("/Users/scottpena/Documents/GitHub/DRL_Assignment/DQN_Checkpoints/checkpoint_episode_20.pt")
+    # agent.load_models("/Users/scottpena/Documents/GitHub/DRL_Assignment/DQN_Checkpoints/checkpoint_episode_20.pt")
     
 
     logs_dir = Path(os.path.dirname(os.path.abspath(__file__)) + "/logs")
