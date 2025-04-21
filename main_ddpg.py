@@ -46,7 +46,8 @@ class CriticNetwork(torch.nn.Module):
 
 # Define the DDPG Agent
 class DDPGAgent:
-    def __init__(self, state_dim, n_actions, alpha=0.0001, beta=0.0001, gamma=0.99, tau=0.005):
+    def __init__(self, state_dim, n_actions, alpha=0.0001, beta=0.0001, gamma=0.99, tau=0.005,
+                 noise_std_init=0.3, noise_std_min=0.05, noise_decay=0.995):
         self.gamma = gamma
         self.tau = tau
         self.n_actions = n_actions
@@ -57,13 +58,18 @@ class DDPGAgent:
         self.target_critic = CriticNetwork(beta, state_dim, 400, 300, n_actions)
 
         self.update_network_parameters(tau=tau)
+        
+        self.noise_std = noise_std_init
+        self.noise_std_init = noise_std_init
+        self.noise_std_min = noise_std_min
+        self.noise_decay = noise_decay
 
     def choose_action(self, observation):
         if isinstance(observation, tuple):
             observation = observation[0]
         state = torch.tensor([observation], dtype=torch.float).to(self.actor.device)
         actions = self.actor.forward(state)
-        noise = torch.rand(self.n_actions).to(self.actor.device) * 0.3  #FIXME: Add exploration noise with decay
+        noise = torch.normal(mean=0.0, std=self.noise_std, size=(self.n_actions,)).to(self.actor.device)
         action = actions + noise
         action = action.detach().cpu().numpy()[0]  # Convert to NumPy array
         
@@ -248,6 +254,7 @@ if __name__ == '__main__':
             episode_step += 1
         score_history.append(score)
         avg_score = np.mean(score_history[-100:])
+        agent.noise_std = max(agent.noise_std * agent.noise_decay, agent.noise_std_min)
         if i % PRINT_INTERVAL == 0 and i > 0:
             print('episode', i, 'average score {:.1f}'.format(avg_score))
             agent.save_models()
