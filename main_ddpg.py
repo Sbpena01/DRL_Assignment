@@ -63,7 +63,7 @@ class DDPGAgent:
             observation = observation[0]
         state = torch.tensor([observation], dtype=torch.float).to(self.actor.device)
         actions = self.actor.forward(state)
-        noise = torch.rand(self.n_actions).to(self.actor.device) * 0.1  #FIXME: Add exploration noise with decay
+        noise = torch.rand(self.n_actions).to(self.actor.device) * 0.3  #FIXME: Add exploration noise with decay
         action = actions + noise
         action = action.detach().cpu().numpy()[0]  # Convert to NumPy array
         
